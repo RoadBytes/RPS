@@ -69,3 +69,16 @@ end
 ~~~
 
 if the human and computer were players, they would have `#choose`
+
+# After implementing the App
+
+I liked working on a OOP method of Rock Paper Scissors and I tried to organize my application like a Rails App.  I also installed Rspec to handle testing to add the bonus features.
+
+# Bonus features
+
+I'm making branches to be able to access the app as I change it in various states.  See the log to show all branches
+
+* Lizard, Spock
+  - I just added these values to the `Move` class.  I also just created a class constant `VALID_VALUES` to help dry up the code.
+  - In the `Computer` class, I had a method that instantiated a `move` variable by referencing the `Moves::VALID_VALUES` class constant, and I ended up changing this "constant", but I just added a `.clone` method and so a new array object was created all together.
+  - It was relatively easy, but there was some dependency I needed to change with Player choose.  Players can now choose 'lizard', and 'spock' so I piped in the `Move::VALID_VALUES` here too to hopefully dry up future choices.
