@@ -1,5 +1,5 @@
 class Player
-  VALID_VALUES = %w(rock paper scissors lizard spock)
+  VALID_VALUES = %w(rock paper scissors)
   attr_accessor :name, :move, :score
 
   def initialize(name)

@@ -1,5 +1,5 @@
 class Move
-  VALID_VALUES = ['rock', 'paper', 'scissors', 'lizard', 'spock']
+  VALID_VALUES = Player::VALID_VALUES
   attr_reader :value
 
   def initialize(value)
@@ -11,15 +11,11 @@ class Move
     if value == move2.value
       "tie"
     elsif rock?
-      (move2.scissors? or move2.lizard?) ? "win" : "lose"
+      move2.scissors? ? "win" : "lose"
     elsif paper?
-      (move2.rock? or move2.spock?) ? "win" : "lose"
+      move2.rock? ? "win" : "lose"
     elsif scissors?
-      (move2.paper? or move2.lizard?) ? "win" : "lose"
-    elsif lizard?
-      (move2.paper? or move2.spock?) ? "win" : "lose"
-    elsif spock?
-      (move2.scissors? or move2.rock?) ? "win" : "lose"
+      move2.paper? ? "win" : "lose"
     else
       'lose'
     end
