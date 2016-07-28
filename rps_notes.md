@@ -78,7 +78,30 @@ I liked working on a OOP method of Rock Paper Scissors and I tried to organize m
 
 I'm making branches to be able to access the app as I change it in various states.  See the log to show all branches
 
+https://github.com/RoadBytes/RPS
+
 * Lizard, Spock
-  - I just added these values to the `Move` class.  I also just created a class constant `VALID_VALUES` to help dry up the code.
-  - In the `Computer` class, I had a method that instantiated a `move` variable by referencing the `Moves::VALID_VALUES` class constant, and I ended up changing this "constant", but I just added a `.clone` method and so a new array object was created all together.
-  - It was relatively easy, but there was some dependency I needed to change with Player choose.  Players can now choose 'lizard', and 'spock' so I piped in the `Move::VALID_VALUES` here too to hopefully dry up future choices.
+* Separate Paper, Rock, and Scissors classes
+* History of moves
+
+# Lizard, Spock
+
+- I just added these values to the `Move` class.  I also just created a class constant `VALID_VALUES` to help dry up the code.
+- In the `Computer` class, I had a method that instantiated a `move` variable by referencing the `Moves::VALID_VALUES` class constant, and I ended up changing this "constant", but I just added a `.clone` method and so a new array object was created all together.
+- It was relatively easy, but there was some dependency I needed to change with Player choose.  Players can now choose 'lizard', and 'spock' so I piped in the `Move::VALID_VALUES` here too to hopefully dry up future choices.
+
+# Separate Paper, Rock, and Scissors classes
+
+- This was really interesting bc the `Move#compare` method was much easier to implement
+  * for example, in the `Paper` class
+
+~~~
+def compare(other_move)
+  return 'tie' if other_move.class == self.class
+  other_move.class.to_s == "Rock" ? "win" : "lose"
+end
+~~~
+
+- I also liked how to instantiate new moves dynamically with `Kernel.const_get(class.name).new`
+
+# History of moves
