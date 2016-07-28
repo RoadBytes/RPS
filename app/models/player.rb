@@ -14,6 +14,6 @@ class Player
       move = gets.chomp
       break if VALID_VALUES.include? move
     end
-    self.move = Move.new(move)
+    self.move = Kernel.const_get(move.capitalize).new
   end
 end

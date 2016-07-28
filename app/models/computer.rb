@@ -10,7 +10,7 @@ class Computer < Player
     favored_move = BIASES[name]
     10.times { moves <<  favored_move }
     move = moves.sample
-    self.move = Move.new(move)
+    self.move = Kernel.const_get(move.capitalize).new
   end
 end
 
