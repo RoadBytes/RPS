@@ -11,6 +11,7 @@ class Computer < Player
     10.times { moves <<  favored_move }
     move = moves.sample
     self.move = Kernel.const_get(move.capitalize).new
+    self.moves << move.to_s
   end
 end
 

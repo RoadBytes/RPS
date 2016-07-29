@@ -1,10 +1,11 @@
 class Player
   VALID_VALUES = %w(rock paper scissors)
-  attr_accessor :name, :move, :score
+  attr_accessor :name, :move, :score, :moves
 
   def initialize(name)
     @name  = name
     @score = 0
+    @moves = []
   end
 
   def choose
@@ -15,5 +16,6 @@ class Player
       break if VALID_VALUES.include? move
     end
     self.move = Kernel.const_get(move.capitalize).new
+    self.moves << move.to_s
   end
 end

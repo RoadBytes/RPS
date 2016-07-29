@@ -16,6 +16,7 @@ class RPSGame
       computer.choose
       score_game
       display_winner
+      display_history
       break unless no_winning_score? and play_again?
     end
 
@@ -48,6 +49,11 @@ class RPSGame
     game_result = human.move.compare(computer.move).capitalize
     puts "You #{game_result} #{human.name}"
     puts "The score is #{human.name}: #{human.score} to #{computer.name}: #{computer.score}"
+  end
+
+  def display_history
+    p "Your moves #{human.moves}"
+    p "#{computer.name}'s moves #{computer.moves}"
   end
 
   def display_goodbye_message
