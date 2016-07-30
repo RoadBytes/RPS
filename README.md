@@ -1,71 +1,36 @@
-# Rock, Paper, Scissors Game
+# Launch School OOP Rock Paper Scissors!
 
-# Initial Thoughts
+To play:
 
-I'm learning to work on OOP programming and it's a bit overwhelming.  Well first things first, I'll get going on this game.
+* copy the repo and
+* enter `$ ruby rps_game.rb` in the terminal from the root folder
 
-# Notes on OOP
+# For reviewers, thanks for taking the time to read through my app.
 
-1. Write a textual description of the problem or exercise.
-2. Extract the major nouns and verbs from the description.
-3. Organize and associate the verbs with the nouns.
-4. The nouns are the classes and the verbs are the behaviors or methods.
+FYI, there were bonus features and I tried them out and saved the code with different branches.
 
-# Finding a Description
+* master
+  * has 'lizard' and 'spock' moves
+  * also has 'personalities' for computers here by adding move favored moves to the moves array so there is a bias when it is sampled
 
-We don't think about the flow at all.
-First write out a textual description of RPS
+* smart-compter-move-choice
+  * has a way for the computer to play 'smarter'
+  * it creates an array with less losing moves in it so that when it's `sample`d it will bias the non losing moves
+  * for the test,
+    * https://github.com/RoadBytes/RPS/blob/smart-compter-move-choice/spec/models/computer_spec.rb
 
-~~~
-RPS is a two player game where each player chooses Rock, Paper, or Scissors.
 
-- rock > scissors
-- scissors > paper
-- paper > rock
+* history-of-moves
+  * adds a `moves` method, that references an array, to the `Player` class so `Human` and `Computer` can store their moves played in the game
 
-same move is a tie
-~~~
+* rock-paper-scissor-classes
+  * This made the `Move#compare` method much easier to implement.
 
-# Here is a potential extraction
-
-~~~
-Nouns: player, move, rules
-Verbs: choose, compare
-~~~
-
-Organizing Nouns and verbs
+Note: I added tests and I liked learning about how to stub out `gets`.  I found out that there is a `Kernel` module mixed into `Object` so that to stub our `gets`, I can implement something like:
 
 ~~~
-Player
-  - choose
-Move
-Rule
-
-- compare
+player = Human.new
+allow(player).to receive(:gets).and_return("paper\n")
 ~~~
 
-# Making an engine
-
-~~~
-class RPSGame
-  def initialize
-  end
-
-  def play
-  end
-end
-~~~
-
-# focusing on the `play` method
-
-~~~
-def play
-  display_welcome_message
-  get_human_move
-  get_computer_move
-  display_winner
-  display_goodbye_message
-end
-~~~
-
-if the human and computer were players, they would have `#choose`
+Anyway, on to the next one.  Any honest feedback will be appreciated and considered. Cheers!
