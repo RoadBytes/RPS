@@ -11,7 +11,7 @@ FYI, there were bonus features and I tried them out and saved the code with diff
 
 * master
   * has 'lizard' and 'spock' moves
-  * also has 'personalities' for computers here by adding move favored moves to the moves array so there is a bias when it is sampled
+  * also has 'personalities' for computers here by adding favored moves to a moves array so there is a bias when it is `moves.sample`d
 
 * smart-compter-move-choice
   * has a way for the computer to play 'smarter'
