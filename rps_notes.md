@@ -131,3 +131,11 @@ end
   - it'd just be a list of moves with a table
   - Player on top header and each row would represent each game
   - if this is the case, then we can have another MoveLedger class maybe?
+
+# Adjust computer choice based on history
+
+###### Come up with some rules based on the history of moves in order for the computer to make a future move. For example, if the human tends to win over 60% of his hands when the computer chooses "rock", then decrease the likelihood of choosing "rock". You'll have to first come up with a rule (like the one in the previous sentence), then implement some analysis on history to see if the history matches that rule, then adjust the weight of each choice, and finally have the computer consider the weight of each choice when making the move. Right now, the computer has a 33% chance to make any of the 3 moves.
+
+# Rule
+
+When ever the computer loses, it just adds the non losing moves into an array. This array will then have more of a likelihood of returning the non losing moves when `.sample` is run on it.

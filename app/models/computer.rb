@@ -1,17 +1,28 @@
 class Computer < Player
-  BIASES = { 'R2D2' => 'rock', 'C3PO' => 'paper', 'Hal' => 'scissors' }
+  attr_accessor :move_selection
 
   def initialize
+    @valid_moves    = Player::VALID_VALUES.clone
+    @move_selection = Player::VALID_VALUES.clone
     super(%w(R2D2 C3PO Hal).sample)
   end
 
   def choose
-    moves = Player::VALID_VALUES.clone
-    favored_move = BIASES[name]
-    10.times { moves <<  favored_move }
-    move = moves.sample
+    move = move_selection.sample
     self.move = Kernel.const_get(move.capitalize).new
     self.moves << move.to_s
+  end
+
+  def adjust_move_selection(losing_move)
+    non_losing_moves = valid_moves
+    non_losing_moves.delete(losing_move)
+    self.move_selection += non_losing_moves
+  end
+
+  private
+
+  def valid_moves
+    @valid_moves.clone
   end
 end
 

@@ -37,6 +37,7 @@ class RPSGame
   def score_game
     game_result = human.move.compare(computer.move)
     if game_result == 'win'
+      computer.adjust_move_selection(computer.move.name)
       human.score += 1
     elsif game_result == 'lose'
       computer.score += 1
